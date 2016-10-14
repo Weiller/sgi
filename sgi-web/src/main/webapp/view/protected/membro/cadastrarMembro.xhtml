@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite/componentes">
+
+<ui:decorate template="/template/padrao.xhtml">
+
+	<ui:define name="menuLateral">
+
+		<h:form name="formMenu">
+			<p:menu styleClass="estilo-menu">
+				<p:submenu label="Menu" styleClass="estilo-submenu">
+					<p:menuitem value="Pessoa" icon="icon-person" update=":formCentro"
+						process="@this"/>
+					<p:menuitem value="Usuário" icon="icon-leader" update=":formCentro"
+						/>
+				</p:submenu>
+			</p:menu>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="centro">
+		<h:form name="formCentro" id="formCentro">
+
+			<p:panel id="panelVisualizar" toggleable="true" toggleSpeed="500">
+				<p:fieldset legend="Cadastrar Pessoa" toggleable="true"
+					toggleSpeed="500">
+					<div style="float: left;">
+						<p:panelGrid columns="2">
+							<p:outputLabel for="nome" value="#{msgs.nome}" />
+							<p:inputText id="nome" value="#{pessoaController.pessoa.nome}"
+								required="true" maxlength="80" />
+
+							<p:outputLabel for="dataNascimento"
+								value="#{msgs.dataNascimento}" />
+							<p:calendar id="dataNascimento"
+								value="#{pessoaController.pessoa.dataNascimento}"
+								pattern="dd/MM/yyyy" mask="99/99/9999" navigator="true"
+								maxdate="#{pessoaController.dateHoje}" locale="pt"
+								required="true" />
+
+							<p:outputLabel for="telefone" value="#{msgs.telefone}" />
+							<p:inputText id="telefone"
+								value="#{pessoaController.pessoa.telefone}" maxlength="15" />
+
+							<p:outputLabel for="endereco" value="#{msgs.endereco}" />
+							<p:inputText id="endereco"
+								value="#{pessoaController.pessoa.endereco}" required="true"
+								maxlength="120" />
+						</p:panelGrid>
+					</div>
+				</p:fieldset>
+
+				<p:commandButton value="Salvar" icon="icon-salvar"
+					action="#{pessoaController.salvarPessoa()}" update="@form"
+					process="@form" style="float:left;" styleClass="btn-salvar" />
+
+				<p:commandButton value="Cancelar" icon="icon-cancelar"
+					action="#{pessoaController.redirecionar()}" ajax="false"
+					immediate="true" style="float:right;" styleClass="btn-cancelar" />
+
+
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+
+</ui:decorate>
+</html>

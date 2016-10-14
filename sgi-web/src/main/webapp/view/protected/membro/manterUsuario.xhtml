@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:decorate template="/template/padrao.xhtml">
+
+	<ui:define name="menuLateral">
+		<h:form name="formMenu">
+			<p:menu style="width: 200px">
+				<p:submenu label="Menu">
+					<p:menuitem value="Cadastrar Pessoa" icon="ui-icon-contact"
+						update="@form" process="@this" action="" />
+					<p:menuitem value="Visualizar Pessoas" icon="ui-icon-circle-zoomin"
+						update="@form" process="@this" action="" />
+					<p:menuitem value="Cadastrar Usuário" icon="ui-icon-contact"
+						update="@form" action="" />
+				</p:submenu>
+			</p:menu>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="centro">
+		<h:form>
+			<p:panel id="panelMostrarPessoas" header="Selecione a Pessoa"
+				toggleable="true" toggleSpeed="500"
+				rendered="#{usuarioController.pessoa.id == null}">
+				<p:dataTable value="#{usuarioController.pessoasList}"
+					var="pessoasList">
+					<p:column headerText="Nome">
+						<h:outputText value="#{pessoasList.nome}" />
+					</p:column>
+					<p:column headerText="Login">
+						<h:outputText value="#{pessoasList.usuario.login}" />
+					</p:column>
+					<p:column headerText="Ação">
+						<p:commandButton value="Selecionar"
+							action="#{usuarioController.selecionar(pessoasList)}"
+							update="@form" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+			<p:panel id="panelCadastroUsuario" header="Cadastrar Usuário"
+				toggleable="true" toggleSpeed="500"
+				rendered="#{usuarioController.pessoa.id != null}">
+
+				<p:fieldset legend="Pessoa" toggleable="true" toggleSpeed="500">
+					<div style="float: left;">
+						<p:panelGrid columns="2">
+							<p:outputLabel for="nomeVisualizacao" value="#{msgs.nome}" />
+							<p:inputText id="nomeVisualizacao"
+								value="#{usuarioController.pessoa.nome}" />
+							<p:outputLabel for="telefoneVisualizacao" value="Telefone: " />
+							<p:inputText id="telefoneVisualizacao"
+								value="#{usuarioController.pessoa.telefone}" disabled="true" />
+						</p:panelGrid>
+					</div>
+				</p:fieldset>
+				<br />
+				<p:fieldset legend="Usuário" toggleable="true" toggleSpeed="500">
+					<div style="float: left;">
+						<p:panelGrid columns="2">
+							<p:outputLabel for="login" value="#{msgs.loginLabel}" />
+							<p:inputText id="login"
+								value="#{usuarioController.usuario.login}" />
+							<p:outputLabel for="senha" value="Senha: " />
+							<p:password id="senha" value="#{usuarioController.usuario.senha}" />
+							<p:outputLabel for="status" value="#{msgs.status}" />
+							<p:selectOneMenu id="status"
+								value="#{usuarioController.usuario.status}">
+								<f:selectItem itemLabel="Escolha o status" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{usuarioController.status}"></f:selectItems>
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</div>
+				</p:fieldset>
+				<p:commandButton value="Salvar"
+					action="#{usuarioController.salvarUsuario()}" style="float:left;"
+					update="@form" />
+
+				<p:commandButton value="Cancelar"
+					action="#{usuarioController.limparForm()}" style="float:right;"
+					update="@form" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:decorate>
+</html>

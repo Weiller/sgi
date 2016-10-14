@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/resources/componentes">
+
+<ui:decorate template="/template/padrao.xhtml">
+
+	<ui:define name="menuLateral">
+
+		<h:form name="formMenu">
+			<p:menu styleClass="estilo-menu">
+				<p:submenu label="Menu" styleClass="estilo-submenu">
+					<p:menuitem value="Pessoa" icon="icon-person" update=":formCentro"
+						process="@this" action="" />
+					<p:menuitem value="Usuário" icon="icon-leader" update=":formCentro"
+						action="" />
+				</p:submenu>
+			</p:menu>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="centro">
+
+		<h:form name="formCentro" id="formCentro">
+			<p:toolbar styleClass="estilo-tolbar">
+				<p:toolbarGroup style="float: left">
+					<p:commandButton value="Novo" styleClass="btn-novo"
+						icon="icon-novo" update=":formCentro" process="@this"
+						actionListener="#{pessoaController.renderizarCadastro()}" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup style="float: right">
+					<p:commandButton value="Pesquisar" styleClass="btn-pesquisar"
+						icon="icon-pesquisar" update=":formCentro" process="@this"
+						actionListener="#{pessoaController.pesquisarPessoas()}" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panel id="panelCadastroPessoa"
+				toggleable="true" toggleSpeed="500"
+				rendered="#{pessoaController.renderizaPagina == 'cadastro'}">
+				<p:fieldset legend="Cadastrar Pessoa" toggleable="true" toggleSpeed="500">
+					<div style="float: left;">
+						<p:panelGrid columns="4">
+							<p:outputLabel for="nome" value="#{msgs.nome}" />
+							<p:inputText id="nome" value="#{pessoaController.pessoa.nome}"
+								required="true" maxlength="80" />
+
+							<p:outputLabel for="dataNascimento"
+								value="#{msgs.dataNascimento}" />
+							<p:calendar id="dataNascimento"
+								value="#{pessoaController.pessoa.dataNascimento}"
+								pattern="dd/MM/yyyy" mask="99/99/9999" navigator="true"
+								maxdate="#{pessoaController.dateHoje}" locale="pt"
+								required="true" />
+
+							<p:outputLabel for="telefone" value="#{msgs.telefone}" />
+							<p:inputText id="telefone"
+								value="#{pessoaController.pessoa.telefone}" maxlength="15" />
+
+							<p:outputLabel for="endereco" value="#{msgs.endereco}" />
+							<p:inputText id="endereco"
+								value="#{pessoaController.pessoa.endereco}" required="true"
+								maxlength="120" />
+						</p:panelGrid>
+					</div>
+				</p:fieldset>
+				<br />
+				<br />
+				<p:commandButton value="Salvar" icon="icon-salvar"
+					actionListener="#{pessoaController.salvarPessoa()}" update="@form"
+					process="panelCadastroPessoa" style="float:left;"
+					styleClass="btn-salvar" />
+
+				<p:commandButton value="Cancelar" icon="icon-cancelar"
+					actionListener="#{pessoaController.cancelar()}"
+					update=":formCentro" process="@this" style="float:right;"
+					styleClass="btn-cancelar" />
+			</p:panel>
+
+			<br />
+			<p:panel id="panelPesquisar" 
+				styleClass="panel-pesquisar"
+				rendered="#{pessoaController.renderizaPagina == 'visualiza'}">
+				<p:fieldset legend="Pesquisar Pessoas" toggleable="true" toggleSpeed="500">
+					<p:panelGrid columns="8" style="float: left;">
+					
+						<p:outputLabel for="buscaNome" value="#{msgs.nome}" />
+						<p:inputText id="buscaNome" style="width: 200px;"
+							value="#{pessoaController.pessoaTemp.nome}" maxlength="80" />
+							
+						<p:outputLabel for="buscaLogin" value="#{msgs.loginLabel}" />
+						<p:inputText id="buscaLogin" style="width: 120px"
+							value="#{pessoaController.usuario.login}"
+							maxlength="80" />
+							
+						<p:outputLabel for="buscaTelefone" value="#{msgs.telefone}" />
+						<p:inputText id="buscaTelefone" style="width: 80px"
+							value="#{pessoaController.pessoaTemp.telefone}" maxlength="80" />
+							
+						<p:outputLabel value="Data Nascimento"/>					
+						<p:calendar id="buscaDataNascimento" size="9"
+							value="#{pessoaController.pessoaTemp.dataNascimento}"
+							pattern="dd/MM/yyyy" mask="99/99/9999" navigator="true"
+							maxdate="#{pessoaController.dateHoje}" locale="pt" />
+
+					</p:panelGrid>
+					<p:panelGrid columns="2" style="float: left;">
+						<p:commandButton id="btnBuscar" value="Buscar"
+							icon="icon-pesquisar"
+							actionListener="#{pessoaController.pesquisarPessoas()}"
+							update=":formCentro:panelVisualizar" process="panelPesquisar"
+							styleClass="btn-buscar" />
+						<p:commandButton id="btnLimpar" value="Limpar"
+							actionListener="#{pessoaController.limparTabela()}"
+							update=":formCentro:panelVisualizar :formCentro:panelPesquisar"
+							process="panelPesquisar" styleClass="btn-pesquisar" />
+					</p:panelGrid>
+
+				</p:fieldset>
+
+			</p:panel>
+
+			<p:panel id="panelVisualizar" toggleable="true" toggleSpeed="500"
+				rendered="#{pessoaController.renderizaPagina == 'visualiza'}">
+
+				<composite:contextMenu id="menuTabelaPessoa"
+					for=":formCentro:tabelaPessoa:composite">
+					<p:menuitem value="Editar" update="@form"
+						icon="icon-editar-sem-borda"
+						actionListener="#{pessoaController.renderizarEdicao}" />
+					<p:menuitem value="Excluir" update="@form"
+						icon="icon-remover-sem-borda"
+						actionListener="#{pessoaController.excluirViaContextMenu}" />
+				</composite:contextMenu>
+
+				<composite:dataTable id="tabelaPessoa"
+					value="#{pessoaController.pessoasList}" var="pessoasList"
+					rowKey="#{pessoasList.id}" >
+
+					<p:column headerText="Nome" sortBy="#{pessoasList.nome}">
+						<h:outputText value="#{pessoasList.nome}" />
+					</p:column>
+
+					<p:column headerText="Data de Nascimento" width="80"
+						sortBy="#{pessoasList.dataNascimento}">
+						<h:outputText value="#{pessoasList.dataNascimento}">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Endereço" sortBy="#{pessoasList.endereco}">
+						<h:outputText value="#{pessoasList.endereco}" />
+					</p:column>
+
+					<p:column headerText="Telefone" width="60"
+						sortBy="#{pessoasList.telefone}">
+						<h:outputText value="#{pessoasList.telefone}" />
+					</p:column>
+
+					<p:column headerText="Login" sortBy="#{pessoasList.usuario.login}">
+						<h:outputText value="#{pessoasList.usuario.login}" />
+					</p:column>
+
+					<p:column headerText="Ação" width="60"
+						sortBy="#{pessoasList.usuario.login}">
+
+						<p:commandLink update="@form"
+							process=":formCentro:panelVisualizar" style="float:left;"
+							action="#{pessoaController.editarPessoa(pessoasList)}">
+							<p:graphicImage styleClass="icon-editar" />
+						</p:commandLink>
+
+						<p:commandLink update=":formCentro:panelVisualizar"
+							process=":formCentro:panelVisualizar" style="float:right;"
+							action="#{pessoaController.excluirPessoa(pessoasList)}">
+							<p:graphicImage styleClass="icon-remover" />
+						</p:commandLink>
+
+					</p:column>
+				</composite:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>

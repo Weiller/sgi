@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sgi="http://java.sun.com/jsf/resources/componentes">
+
+<ui:decorate template="/template/padrao.xhtml">
+	<f:metadata>
+		<f:event listener="#{pessoaListController.inicio()}"
+			type="preRenderView" />
+	</f:metadata>
+	
+	<ui:define name="centro">
+		<h:form name="formCentro" id="formCentro">
+			<p:panel id="panelVisualizar" toggleable="true" toggleSpeed="500">
+
+				<p:dataTable id="tableMembro" value="#{pessoaListController.pessoasList}" var="pessoasList" rowKey="#{pessoasList.id}">
+
+					<p:column headerText="Nome" sortBy="#{pessoasList.nome}">
+						<h:outputText value="#{pessoasList.nome}" />
+					</p:column>
+
+					<p:column headerText="Data de Nascimento" width="80"
+						sortBy="#{pessoasList.dataNascimento}">
+						<h:outputText value="#{pessoasList.dataNascimento}">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Endereço" sortBy="#{pessoasList.endereco}">
+						<h:outputText value="#{pessoasList.endereco}" />
+					</p:column>
+
+					<p:column headerText="Telefone" width="60"
+						sortBy="#{pessoasList.telefone}">
+						<h:outputText value="#{pessoasList.telefone}" />
+					</p:column>
+
+					<p:column headerText="Login" sortBy="#{pessoasList.usuario.login}">
+						<h:outputText value="#{pessoasList.usuario.login}" />
+					</p:column>
+					
+					<p:column headerText="Ação" width="60"
+						sortBy="#{pessoasList.usuario.login}">
+
+						<p:commandLink update="@form"
+							process="@this" style="float:left;"
+							action="#{pessoaListController.editar}">
+							<f:setPropertyActionListener value="#{pessoasList}" target="#{pessoaController.pessoa}" />
+							<p:graphicImage styleClass="icon-editar" />
+						</p:commandLink>
+
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+
+			<p:commandButton value="Incluir Membro" icon="icon-salvar"
+				action="#{pessoaListController.redirecionar}" update="@form" process="@form"
+				style="float:left;" styleClass="btn-salvar" />
+		</h:form>
+	</ui:define>
+
+
+</ui:decorate>
+</html>

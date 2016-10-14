@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login - SGI</title>
+	<h:outputStylesheet library="css" name="sgi.css" />
+	<h:outputScript library="js" name="sgi.js" />
+</h:head>
+<h:body>
+	
+	<div class="login-dialog">
+	
+	<h:form id="frm" prependId="false">
+	<p:graphicImage library="img" name="sara.png" styleClass="estilo-imagem-login"/>
+	<p:fieldset legend="LOGAR NO SISTEMA" styleClass="field-login">
+		<p:messages closable="true" autoUpdate="true" />
+		<p:panelGrid columns="2" styleClass="grid-login">
+
+			<p:outputLabel for="login" styleClass="output-login" value="#{msgs.login}"></p:outputLabel>
+			<p:inputText id="login" styleClass="input-login" value="#{loginController.login}" />
+
+			<p:outputLabel for="senha" styleClass="output-senha"  value="#{msgs.senha}"></p:outputLabel>
+			<p:password id="senha" value="#{loginController.senha}" styleClass="input-senha" />
+
+			<p:link value="Esqueci minha senha" styleClass="linkEsqueciSenha"/>
+				<p:commandButton value="ENTRAR" styleClass="btn-entrar" action="#{loginController.logar}"
+				ajax="false" />
+		</p:panelGrid>
+		</p:fieldset>
+	</h:form>
+	</div>
+</h:body>
+</html>

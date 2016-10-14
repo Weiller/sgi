@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+   <parent>
+        <groupId>br.com</groupId>
+        <artifactId>sgi</artifactId>
+        <version>1.0</version>
+    </parent>
+  
+  <artifactId>sgi-ear</artifactId>
+  <packaging>ear</packaging>
+  <name>sgi-ear</name>
+  
+  <description>Modulo EAR do projeto</description>
+  
+  <dependencies>
+  
+  	   <dependency>
+		<groupId>br.com</groupId>
+		<artifactId>sgi-core</artifactId>
+		<version>1.0</version>
+		<type>jar</type>
+	  </dependency>	
+  
+	  <dependency>
+		<groupId>br.com</groupId>
+		<artifactId>sgi-ejb</artifactId>
+		<version>1.0</version>
+		<type>ejb</type>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>br.com</groupId>
+		<artifactId>sgi-model</artifactId>
+		<version>1.0</version>
+		<type>ejb</type>
+	  </dependency>
+	  
+ 	 <dependency>
+		<groupId>br.com</groupId>
+		<artifactId>sgi-web</artifactId>
+		<version>1.0</version>
+		<type>war</type>
+	  </dependency> 
+  
+  </dependencies>
+  
+  <build>
+        <finalName>sgi</finalName>
+        <plugins>
+            <!-- Plugin de empacotamento EAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <fileNameMapping>no-version</fileNameMapping>
+                    <modules>
+                    	<webModule>
+							<groupId>br.com</groupId>
+							<artifactId>sgi-web</artifactId>
+							<bundleFileName>sgi.war</bundleFileName>
+							<contextRoot>/sgi</contextRoot>
+							<unpack>false</unpack>
+						</webModule>
+                    </modules>
+                </configuration>
+            </plugin> 
+            
+            <plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+				<configuration>
+					<filename>sgi.ear</filename>
+					<skip>false</skip>
+					<unpack>false</unpack>
+				</configuration>
+			</plugin>
+                                  
+        </plugins>
+    </build>
+  
+</project>

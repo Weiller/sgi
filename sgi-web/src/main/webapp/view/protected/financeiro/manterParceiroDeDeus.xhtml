@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:decorate template="/template/padrao.xhtml">
+
+	<ui:define name="menu">
+
+		<h:form name="formMenu">
+			<p:menu style="width: 200px">
+				<p:submenu label="Menu">
+					<p:menuitem value="Cadastrar Pessoa" icon="ui-icon-contact"
+						process="@this"
+						actionListener="#{pessoaController.renderizarCadastro()}" />
+					<p:menuitem value="Visualizar Pessoas" icon="ui-icon-circle-zoomin"
+						process="@this"
+						actionListener="#{pessoaController.renderizarTabela()}" />
+					<p:menuitem value="Cadastrar Usuário" icon="ui-icon-contact"
+						action="" />
+					<p:menuitem value="Sair" url="/j_spring_security_logout" />
+				</p:submenu>
+			</p:menu>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="centro">
+
+		Página de parceiro de Deus
+	</ui:define>
+</ui:decorate>
+</html>

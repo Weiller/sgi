@@ -1,0 +1,52 @@
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="sgi">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
+
+		<properties>
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+			<property name="hibernate.cache.use_use_query_cache" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- poderia ser: update, create, create-drop, none -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+			<property name="hibernate.generate_statistics" value="true" />
+
+		</properties>
+	</persistence-unit>
+	
+<!-- 	<persistence-unit name="sgi-test" transaction-type="RESOURCE_LOCAL"> -->
+<!-- 		<provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+
+<!-- 		<properties> -->
+<!-- 			<property name="hibernate.cache.use_second_level_cache" -->
+<!-- 				value="true" /> -->
+<!-- 			<property name="hibernate.cache.use_use_query_cache" value="true" /> -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> -->
+
+<!-- 			<property name="hibernate.show_sql" value="true" /> -->
+<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+<!-- 				<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> -->
+<!-- 			<property name="hibernate.connection.username" value="postgres" /> -->
+<!-- 			<property name="hibernate.connection.password" value="armando1" /> -->
+<!-- 			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/sgi" /> -->
+		
+ 			
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
+
+<!-- 			<property name="hibernate.generate_statistics" value="true" /> -->
+
+<!-- 		</properties> -->
+<!-- 	</persistence-unit> -->
+	
+
+</persistence>

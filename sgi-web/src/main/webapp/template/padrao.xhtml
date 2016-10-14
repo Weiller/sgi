@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Membros</title>
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/css/sgi.css"
+		rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript"
+		src="${facesContext.externalContext.requestContextPath}/resources/js/sgi.js" />
+
+</h:head>
+<h:body>
+	<div align="center" style="margin-top: 5px;">
+		
+	</div>
+	<div align="center" style="margin-top: 5px;">
+		<p:layout style="min-width:100px;max-width:1300px; height:520px">
+
+			<p:layoutUnit position="west" size="220">
+					<h:form id="formMenu">
+						<p:panelMenu model="#{menuController.model}"/>
+					</h:form>
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+
+				<p:ajaxStatus onstart="PF('statusDialog').show()"
+					oncomplete="PF('statusDialog').hide()" />
+
+				<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+					closable="false" resizable="false" showHeader="false">
+					<p:graphicImage library="img" name="ajax-loader.gif" />
+				</p:dialog>
+
+				<p:growl id="growl" showDetail="true" autoUpdate="true" life="6000" />
+				
+				<p:outputPanel id="centro">
+					<ui:insert name="centro"/>
+				</p:outputPanel>
+				
+			</p:layoutUnit>
+			<p:layoutUnit position="south" size="40">
+
+			</p:layoutUnit>
+
+		</p:layout>
+	</div>
+</h:body>
+</html>

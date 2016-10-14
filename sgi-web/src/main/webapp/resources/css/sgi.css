@@ -1,0 +1,368 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #eeeeee;
+	font-size: 13px
+}
+
+myFieldset .ui-fieldset, .ui-fieldset .ui-fieldset-legend {
+	margin-right: 85%;
+}
+
+.ui-panelgrid tr, .ui-panelgrid td {
+	border: none !important;
+}
+
+.centralizar {
+	text-align: center;
+}
+
+.panel-pesquisar{
+	border-bottom: none !important;
+}
+
+.grid-login, .ui-panelgrid-cell {
+	margin-top: 8px;
+	padding: 10px;
+	height: 40px;
+}
+
+.field-login {
+	box-shadow: 5px 5px 5px #888888 !important;
+}
+
+.ui-fieldset-legend {
+	width: 150px;
+	color: black !important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+}
+
+.input-login {
+	width: 250px;
+	height: 20px;
+}
+
+.output-login {
+	font-size: 16px !important;
+	font-weight: bolder;
+}
+
+.input-senha {
+	width: 250px;
+	height: 20px;
+}
+
+.output-senha {
+	font-size: 16px !important;
+	font-weight: bolder;
+}
+
+.login-dialog {
+	height: 400px;
+	width: 400px;
+	margin: auto;
+	margin-top: 150px;
+}
+
+.linkEsqueciSenha {
+	font-size: 9px !important;
+}
+
+.btn-entrar {
+	width: 258px;
+	height: 35px;
+	background: #FF0000 !important;
+	color: white !important;
+	border-color: #FF0000 !important;
+}
+
+.btn-cancelar {
+	width: 120px;
+	height: 30px;
+	background: #FF4040 !important;
+	border-color: #FF4040 !important;
+	color: white !important;
+}
+
+.btn-colunas {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3), to(#6495ED) ) !important;
+	color: #507AE5
+}
+
+.btn-cancelar:ACTIVE {
+	width: 120px;
+	height: 30px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#FF4040)) !important;
+	background: #FFF -moz-linear-gradient(center top, #D3D3D3, #FF4040)
+		repeat-x scroll 0px 0px !important;
+	border-color: #FF4040 !important;
+	color: white !important;
+}
+
+.btn-salvar {
+	width: 120px;
+	height: 30px;
+	background: #348b34 !important;
+	border-color: #348b34 !important;
+	color: white !important;
+}
+
+.btn-salvar:ACTIVE {
+	width: 120px;
+	height: 30px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#348b34)) !important;
+	background: #FFF -moz-linear-gradient(center top, #D3D3D3, #348b34)
+		repeat-x scroll 0px 0px !important;
+	border-color: #348b34 !important;
+	color: white !important;
+}
+
+.btn-novo {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+	border-color: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+	color: green !important;
+}
+
+.btn-novo:ACTIVE {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#CDC5BF)) !important;
+	border-color: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+	color: green !important;
+}
+
+.btn-pesquisar {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+	border-color: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+}
+
+.btn-pesquisar:ACTIVE {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#CDC5BF)) !important;
+	border-color: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+}
+
+.btn-buscar {
+	width: 120px;
+	height: 30px;
+	background: #3567D2 !important;
+	border-color: #3567D2;
+	color: white !important;
+
+}
+
+.btn-buscar:ACTIVE {
+	width: 120px;
+	height: 30px;
+	background: #507AE5 !important;
+	border-color: #0A2AE2 !important;
+	color: white !important;
+
+}
+
+
+.menu-membro {
+	max-width:1300px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+	padding: 0px;
+}
+
+.ui-paginator, .ui-paginator-top, .ui-sortable-column,
+	.ui-paginator-page, .ui-paginator-next, .ui-paginator-prev,
+	.ui-paginator-last, .ui-paginator-first, .ui-paginator-rpp-options {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+	background: #FFF -moz-linear-gradient(center top, #D3D3D3, #ffffff)
+		repeat-x scroll 0px 0px !important;
+}
+
+.ui-state-active {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#87CEFA)) !important;
+	background: #FFF -moz-linear-gradient(center top, #D3D3D3, #87CEFA)
+		repeat-x scroll 0px 0px !important;
+	color: white;
+}
+
+.estilo-item-menu-topo-membro {
+	margin-top: 60px !important;
+	color: black;
+	margin-left: -50px;
+}
+
+.estilo-item-menu-topo-financeiro {
+	margin-top: 60px !important;
+	color: black;
+	margin-left: -63.5px;
+}
+
+.estilo-item-menu-topo-sair {
+	position: absolute;
+	right: 4px;
+}
+
+.estilo-item-menu-topo-sair {
+	margin-top: 60px !important;
+	color: black;
+	position: absolute;
+	margin-left: -35px;
+}
+
+.estilo-item{
+	height: 5px !important;
+}
+
+.ui-panel-titlebar {
+	background: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#FF0000)) !important;
+	background: #FFF -moz-linear-gradient(center top, #D3D3D3, #4169E1)
+		repeat-x scroll 0px 0px !important;
+	color: white;
+}
+
+.ui-datatable-header {
+	background: none;
+	border: none;
+}
+
+.estilo-tolbar {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#FF0000)) !important;
+	background: #FFF -moz-linear-gradient(center top, #D3D3D3, #4169E1)
+		repeat-x scroll 0px 0px !important;
+}
+
+.estilo-menu {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#ffffff)) !important;
+	color: white;
+	width: 200px
+}
+
+.estilo-submenu {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3),
+		to(#FF0000)) !important;
+	background: #FFF -moz-linear-gradient(center top, #D3D3D3, #4169E1)
+		repeat-x scroll 0px 0px !important;
+	color: white;
+}
+
+.estilo-imagem-login {
+	margin-top: -130px;
+}
+
+.icon-membro {
+	background-image: url('../img/menu/membro.png') !important;
+	height: 60px;
+	width: 50px;
+	padding: -10px;
+	margin-bottom: 20px;
+}
+
+.icon-sair {
+	background-image: url('../img/menu/exit.png') !important;
+	height: 60px;
+	width: 65px;
+	margin-bottom: 20px;
+}
+
+.icon-financeiro {
+	background-image: url('../img/menu/financeiro.png') !important;
+	height: 60px;
+	width: 60px;
+	padding: -10px;
+	margin-bottom: 20px;
+	margin-left: 8px;
+}
+
+.icon-novo {
+	background-image: url('../img/icons/add.png') !important;
+	height: 20px;
+	width: 20px;
+}
+
+.icon-pesquisar {
+	background-image: url('../img/icons/search.png') !important;
+	height: 20px;
+	width: 20px;
+}
+
+.icon-remover {
+	background-image: url('../img/icons/remove.png') !important;
+	border-style: outset !important;
+	height: 20px;
+	width: 20px;
+}
+
+.icon-remover-sem-borda {
+	background-image: url('../img/icons/remove.png') !important;
+	height: 20px;
+	width: 20px;
+}
+
+.icon-remover:ACTIVE {
+	background-image: url('../img/icons/remove.png') !important;
+	height: 20px;
+	background: black;
+	width: 20px;
+}
+
+.icon-editar {
+	background-image: url('../img/icons/edit.png') !important;
+	border-style: outset !important;
+	height: 20px;
+	width: 20px;
+}
+
+.icon-editar-sem-borda {
+	background-image: url('../img/icons/edit.png') !important;
+	height: 20px;
+	width: 20px;
+}
+
+.icon-editar:ACTIVE {
+	background-image: url('../img/icons/edit.png') !important;
+	border-style: none;
+	height: 20px;
+	background: black;
+	width: 20px;
+}
+
+.icon-salvar {
+	background-image: url('../img/icons/save.png') !important;
+	height: 20px;
+	width: 20px
+}
+
+.icon-cancelar {
+	background-image: url('../img/icons/cancel.png') !important;
+	height: 20px;
+	width: 20px
+}
+
+.icon-person {
+	background-image: url('../img/icons/person.png') !important;
+	height: 16px;
+	width: 16px
+}
+
+.icon-leader {
+	background-image: url('../img/icons/leader.png') !important;
+	height: 16px;
+	width: 16px
+}
+
+.icon-colunas {
+	background-image: url('../img/icons/columns.png') !important;
+	height: 16px;
+	width: 16px
+}
